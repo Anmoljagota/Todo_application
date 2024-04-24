@@ -1,12 +1,26 @@
-import { Box, Button, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import React from "react";
 
-const TodoElements = ({handleTodo,handleSubmit}) => {
+const TodoElements = ({ handleTodo, handleSubmit, text }) => {
   return (
-    <Box>
-      <Input placeholder="Enter todo" onChange={handleTodo}/>
-      <Button colorScheme='blue' onClick={handleSubmit}>Add</Button>
-    </Box>
+    <Flex>
+      <Input
+        placeholder="Enter todo"
+        onChange={handleTodo}
+        borderLeftRadius={6}
+        borderRightRadius={"none"}
+        color={"#FFFFFF"}
+        value={text}
+      />
+      <Button
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        color={"white"}
+        onClick={handleSubmit}
+        borderRadius={"none"}
+      >
+        Add Todo
+      </Button>
+    </Flex>
   );
 };
 

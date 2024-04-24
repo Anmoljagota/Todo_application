@@ -1,14 +1,24 @@
-import * as ADD from "./actionTypes";
+import { filteredData, loaddata, savedata } from "../utils/accessLocalStorage";
+import * as Todo from "./actionTypes";
 const intial_state = {
   loading: false,
   error: false,
-  todos: [],
+  todos: loaddata("todos") || [],
 };
 
 const reducer = (state = intial_state, { type, payload }) => {
   switch (type) {
-    case ADD.ADD_TASK_SUCCESS:
+    case Todo.ADD_TASK_SUCCESS:
+      savedata("todos", payload);
       return { ...state, todos: [...state.todos, payload] };
+
+    case Todo.DELETE_TODO_SUCCESS:
+      filteredData("todos", payload);
+      return { ...state, todos: payload };
+
+    case Todo.Toggle_TODO_SUCCESS:
+      filteredData("todos", payload);
+      return { ...state, todos: payload };
     default:
       return state;
   }
