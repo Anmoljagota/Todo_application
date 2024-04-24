@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Delete_Todo, Task_Success, Toggle_Todo } from "../redux/action";
 import TodoItems from "./TodoItems";
 import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
-
+import nextId from "react-id-generator";
 const Todo = () => {
   const toast = useToast();
+  const uniqueid = nextId();
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const Todos = useSelector((todos) => todos.todos);
@@ -28,7 +29,7 @@ const Todo = () => {
       });
     } else {
       const todo = {
-        id: Math.random() * 10 + 0 * 432 - 21,
+        id: uniqueid,
         text,
         status: false,
         bg: getRandomColor(),

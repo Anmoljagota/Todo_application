@@ -2,7 +2,6 @@ import { Checkbox, Flex, HStack, Text } from "@chakra-ui/react";
 import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
 
-import { FaRegEdit } from "react-icons/fa";
 
 const TodoItems = ({ id, text, status, bg, DeleteTodo, ToggleTodo }) => {
   return (
