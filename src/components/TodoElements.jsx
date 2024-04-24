@@ -15,7 +15,7 @@ const TodoElements = ({ handleTodo, handleSubmit, text }) => {
         borderRightRadius={"none"}
         color={"#FFFFFF"}
         value={text}
-        size={"lg"}
+        size={{sm:"lg",base:"sm"}}
         borderColor={"#7154E0"}
         _hover={{ borderColor: "#7154E0" }}
       />
@@ -27,7 +27,7 @@ const TodoElements = ({ handleTodo, handleSubmit, text }) => {
         borderRadius={"none"}
         borderRightRadius={3}
         border={"none"}
-        size={"lg"}
+        size={{sm:"lg",base:"sm"}}
         _hover={{ borderColor: "#7154E0" }}
       >
         Add Todo

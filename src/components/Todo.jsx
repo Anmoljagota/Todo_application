@@ -76,7 +76,7 @@ const Todo = () => {
       <Heading
         as="h2"
         pb={10}
-        fontSize={"1.6rem"}
+        fontSize={{sm:"1.6rem",base:"1rem"}}
         color={"white"}
         textAlign={"center"}
       >
