@@ -3,9 +3,10 @@ import TodoElements from "./TodoElements";
 import { useDispatch, useSelector } from "react-redux";
 import { Delete_Todo, Task_Success, Toggle_Todo } from "../redux/action";
 import TodoItems from "./TodoItems";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Heading, useToast } from "@chakra-ui/react";
 
 const Todo = () => {
+  const toast = useToast();
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const Todos = useSelector((todos) => todos.todos);
@@ -17,15 +18,25 @@ const Todo = () => {
 
   //function to add a todo inside redux
   const handleSubmit = () => {
-    const todo = {
-      id: Math.random() * 10 + 0 * 432 - 21,
-      text,
-      status: false,
-      bg: getRandomColor(),
-    };
-    console.log(todo, "todod");
-    dispatch(Task_Success(todo));
-    setText("");
+    if (!text) {
+      toast({
+        title: `Todo input should not be empty`,
+        status: "error",
+        isClosable: true,
+        position: "top-right",
+        duration: 3000,
+      });
+    } else {
+      const todo = {
+        id: Math.random() * 10 + 0 * 432 - 21,
+        text,
+        status: false,
+        bg: getRandomColor(),
+      };
+
+      dispatch(Task_Success(todo));
+      setText("");
+    }
   };
 
   //function to add a filter todo inside redux
@@ -55,13 +66,27 @@ const Todo = () => {
     return color;
   }
   return (
-    <Box bg={"#1a202c"} p={6}>
+    <Box
+      bg={"#1a202c"}
+      p={6}
+      w={{ lg: "40vw", md: "60vw", sm: "90vw", base: "95vw" }}
+      borderRadius={10}
+    >
+      <Heading
+        as="h2"
+        pb={10}
+        fontSize={"1.6rem"}
+        color={"white"}
+        textAlign={"center"}
+      >
+        What's the Plan for Today?
+      </Heading>
       <TodoElements
         handleTodo={handleTodo}
         handleSubmit={handleSubmit}
         text={text}
       />
-      <Flex flexDir={"column"} gap={"10px"} mt={5}>
+      <Flex flexDir={"column"} gap={"0.5rem"} mt={5}>
         {Todos.length > 0 &&
           Todos.map((ele) => (
             <TodoItems

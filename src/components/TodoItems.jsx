@@ -13,12 +13,13 @@ const TodoItems = ({ id, text, status, bg, DeleteTodo, ToggleTodo }) => {
         onChange={() => ToggleTodo(id)}
       ></Checkbox>
       <Flex
-        p={2}
+        p={3}
         color={"#FFFFFF"}
         justifyContent={"space-between"}
         alignItems={"center"}
         w={"90%"}
         bg={bg}
+        borderRadius={6}
       >
         <Text>{text}</Text>
         <HStack>
@@ -26,7 +27,7 @@ const TodoItems = ({ id, text, status, bg, DeleteTodo, ToggleTodo }) => {
             style={{ cursor: "pointer", fontSize: "1.3rem" }}
             onClick={() => DeleteTodo(id)}
           />
-          <FaRegEdit />
+          
         </HStack>
       </Flex>
     </HStack>

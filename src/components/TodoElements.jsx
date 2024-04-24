@@ -3,20 +3,32 @@ import React from "react";
 
 const TodoElements = ({ handleTodo, handleSubmit, text }) => {
   return (
-    <Flex>
+    <Flex w={"80%"} m={"auto"}>
       <Input
-        placeholder="Enter todo"
+        placeholder="Add Todo"
+        _placeholder={{
+          color: "white",
+          fontStyle: "bold",
+        }}
         onChange={handleTodo}
         borderLeftRadius={6}
         borderRightRadius={"none"}
         color={"#FFFFFF"}
         value={text}
+        size={"lg"}
+        borderColor={"#7154E0"}
+        _hover={{ borderColor: "#7154E0" }}
       />
+
       <Button
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        bgColor="#7154E0"
         color={"white"}
         onClick={handleSubmit}
         borderRadius={"none"}
+        borderRightRadius={3}
+        border={"none"}
+        size={"lg"}
+        _hover={{ borderColor: "#7154E0" }}
       >
         Add Todo
       </Button>
